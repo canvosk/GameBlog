@@ -1,0 +1,14 @@
+@model GameBlog.Models.Category
+
+@{
+    ViewData["Title"] = "AddCategory";
+}
+<h2>Yeni Kategori Ekle</h2>
+<br/>
+<form method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Kategori Adı</label>
+    @Html.TextBoxFor(x => x.CategoryName,new { @class="form-control"})
+  </div>
+  <button class="btn btn-info">Kategori Ekle</button>
+</form>
