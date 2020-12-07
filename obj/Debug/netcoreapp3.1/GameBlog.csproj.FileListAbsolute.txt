@@ -80,3 +80,5 @@ C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Category\Upd
 C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Blog\AddBlog.cshtml.g.cs
 C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
 C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Blog\UpdateBlog.cshtml.g.cs
+C:\Users\canbe\Desktop\GameBlog\bin\Debug\netcoreapp3.1\package-lock.json
+C:\Users\canbe\Desktop\GameBlog\bin\Debug\netcoreapp3.1\package.json

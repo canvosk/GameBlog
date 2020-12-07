@@ -26,7 +26,7 @@
         <tr>
             <td>@x.BlogID</td>
             <td>@x.BlogHeader</td>
-            <td>@x.BlogContent</td>
+            <td>@Html.Raw(x.BlogContent)</td>
             <td>@x.ImagePath</td>
             <td>@x.BlogDate</td>
             <td>@x.Counter</td>

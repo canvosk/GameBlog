@@ -13,7 +13,12 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Blog İçeriği</label>
+    @Html.TextAreaFor(x => x.BlogContent,new { @class="form-control"})
+    <!--  
+    <div asp-for="BlogContent">This is some sample content.</div> 
     @Html.TextBoxFor(x => x.BlogContent,new { @class="form-control"})
+    <textarea id="editor" class="form-control" asp-for="BlogContent"></textarea>
+    <span asp-validation-for="BlogContent" class="text-danger"></span> -->
   </div>
 
   <div class="form-group">
@@ -28,3 +33,14 @@
 
   <button class="btn btn-info">Blog Ekle</button>
 </form>
+
+<script>
+                        ClassicEditor
+                                .create( document.querySelector( '#BlogContent' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+</script>
