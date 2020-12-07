@@ -77,3 +77,6 @@ C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layo
 C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Category\AddCategory.cshtml.g.cs
 C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Category\DeleteCategory.cshtml.g.cs
 C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Category\UpdateCategory.cshtml.g.cs
+C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Blog\AddBlog.cshtml.g.cs
+C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
+C:\Users\canbe\Desktop\GameBlog\obj\Debug\netcoreapp3.1\Razor\Views\Blog\UpdateBlog.cshtml.g.cs

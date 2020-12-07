@@ -1,0 +1,46 @@
+@model GameBlog.Models.Blog
+
+@{
+    ViewData["Title"] = "UpdateBlog";
+}
+<h2>Blog Güncelleme</h2>
+<br/>
+<form method="POST">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Blog ID</label>
+        @Html.TextBoxFor(x => x.BlogID,new { @class="form-control", @readonly = "readonly"})
+    </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Blog Başlığı</label>
+    @Html.TextBoxFor(x => x.BlogHeader,new { @class="form-control"})
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Blog İçeriği</label>
+    @Html.TextBoxFor(x => x.BlogContent,new { @class="form-control"})
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Blog Resmi</label>
+    @Html.TextBoxFor(x => x.ImagePath,new { @class="form-control"})
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Blog Kategorisi</label>
+    @Html.DropDownListFor(x => x.Category.CategoryID,(List<SelectListItem>)ViewBag.values,new {@class="form-control"})
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Blog Tarihi</label>
+    @Html.TextBoxFor(x => x.BlogDate,new {@class="form-control", @readonly = "readonly"})
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Blog Tıklanma Sayısı</label>
+    @Html.TextBoxFor(x => x.Counter,new {@class="form-control", @readonly = "readonly"})
+  </div>
+
+  <button class="btn btn-info">Blog Ekle</button>
+</form>

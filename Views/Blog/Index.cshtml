@@ -1,0 +1,49 @@
+@model List<GameBlog.Models.Blog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Bloglar</h2>
+<a href="/Blog/AddBlog" class="btn btn-primary">Yeni Kategori Ekle</a>
+<br/>
+<br/>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Blog Başlığı</th>
+        <th>Blog İçeriği</th>
+        <th>Blog Resmi</th>
+        <th>Yayın Tarihi</th>
+        <th>Tıklanma Sayısı</th>
+        <th>Yayında mı?</th>
+        <th>Kategorisi</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.BlogID</td>
+            <td>@x.BlogHeader</td>
+            <td>@x.BlogContent</td>
+            <td>@x.ImagePath</td>
+            <td>@x.BlogDate</td>
+            <td>@x.Counter</td>
+            <td>
+                @if (x.IsPublish)
+                {
+                   <i class="fas fa-check-circle"></i>
+                }
+                else
+                {
+                    <i class="fas fa-times-circle"></i>
+                }
+            </td>
+            <td>@x.Category.CategoryName</td>
+            <td><a href="/Blog/DeleteBlog/@x.BlogID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Blog/UpdateBlog/@x.BlogID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+
+</table>

@@ -16,8 +16,9 @@ namespace GameBlog.Controllers
 
         public IActionResult Index()
         {
-            var list = categoryRepository.ListT();
-            return View(list);
+            var toList = categoryRepository.ListT();
+            ViewBag.check=toList;
+            return View(toList);
         }
 
         [HttpGet]
