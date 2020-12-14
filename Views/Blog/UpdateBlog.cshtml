@@ -2,54 +2,88 @@
 
 @{
     ViewData["Title"] = "UpdateBlog";
+    <link rel="stylesheet" href="~/wwwroot/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/wwwroot/css/main.css">
 }
+
 <h2>Blog Güncelleme</h2>
 <br/>
-<form method="POST">
+    <div class="row">
+      <form method="POST" enctype="multipart/form-data">
+        <div class="col-md-8">
 
-    <div class="form-group">
-        <label for="exampleInputEmail1">Blog ID</label>
-        @Html.TextBoxFor(x => x.BlogID,new { @class="form-control", @readonly = "readonly"})
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label text-center">Blog ID</label>
+                <div class="col-sm-10">
+                  @Html.TextBoxFor(x => x.BlogID,new { @class="form-control", @readonly = "readonly"})
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label text-center">Blog Başlığı</label>
+                <div class="col-sm-10">
+                  @Html.TextBoxFor(x => x.BlogHeader,new { @class="form-control"})
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label text-center">Blog İçeriği</label>
+                <div class="col-sm-10">
+                  @Html.TextAreaFor(x => x.BlogContent,new { @class="form-control"})
+                </div>
+            </div> 
+
+         </div> 
+        
+        
+        <div class="col-md-4">
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Blog Resmi</label>
+            <div class="col-sm-8">
+              <input type="hidden" asp-for="ImagePath">
+              <img src="~/images/@Model.ImagePath" width="80">
+              <input type="file" name="file">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Blog Kategorisi</label>
+            <div class="col-sm-8">
+              @Html.DropDownListFor(x => x.Category.CategoryID,(List<SelectListItem>)ViewBag.values,new {@class="form-control"})
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Yayınlanacak Mı?</label>
+            <div class="col-sm-8">
+              <input asp-for="IsPublish" type="checkbox" class="custom-control-input">
+            </div>
+            <!-- <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="IsPublish">
+              <label class="custom-control-label">Yayınlanacak Mı?</label>
+            </div> -->
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Blog Tarihi</label>
+            <div class="col-sm-8">
+              @Html.TextBoxFor(x => x.BlogDate,new {@class="form-control", @readonly = "readonly"})
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Blog Tıklanma Sayısı</label>
+            <div class="col-sm-8">
+              @Html.TextBoxFor(x => x.Counter,new {@class="form-control", @readonly = "readonly"})
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block">Blogu Güncelle</button>
+        </div>
+      </form>
     </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Blog Başlığı</label>
-    @Html.TextBoxFor(x => x.BlogHeader,new { @class="form-control"})
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Blog İçeriği</label>
-    @Html.TextAreaFor(x => x.BlogContent,new { @class="form-control"})
-    <!--  
-    <div asp-for="BlogContent">This is some sample content.</div> 
-    @Html.TextBoxFor(x => x.BlogContent,new { @class="form-control"})
-    <textarea id="editor" class="form-control" asp-for="BlogContent"></textarea>
-    <span asp-validation-for="BlogContent" class="text-danger"></span> -->
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Blog Resmi</label>
-    @Html.TextBoxFor(x => x.ImagePath,new { @class="form-control"})
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Blog Kategorisi</label>
-    @Html.DropDownListFor(x => x.Category.CategoryID,(List<SelectListItem>)ViewBag.values,new {@class="form-control"})
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Blog Tarihi</label>
-    @Html.TextBoxFor(x => x.BlogDate,new {@class="form-control", @readonly = "readonly"})
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Blog Tıklanma Sayısı</label>
-    @Html.TextBoxFor(x => x.Counter,new {@class="form-control", @readonly = "readonly"})
-  </div>
-
-  <button class="btn btn-info">Blog Ekle</button>
-</form>
-
 <script>
                         ClassicEditor
                                 .create( document.querySelector( '#BlogContent' ) )

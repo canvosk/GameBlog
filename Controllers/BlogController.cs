@@ -9,6 +9,8 @@ using GameBlog.Models;
 using GameBlog.Repositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace GameBlog.Controllers
 {
@@ -32,13 +34,27 @@ namespace GameBlog.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddBlog(Blog p)
+        public async Task<IActionResult> AddBlog(Blog p,IFormFile file)
         {
             var cat = c.Category.Where(x => x.CategoryID == p.Category.CategoryID).FirstOrDefault();
             p.Category = cat;
             DateTime date = DateTime.Now;
             p.BlogDate = date;
             p.Counter = 0;
+
+            if(file!=null)
+            {
+                var extention = Path.GetExtension(file.FileName);
+                var randomName = string.Format($"{Guid.NewGuid()}{extention}");
+                p.ImagePath=randomName;
+                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\images",randomName);
+
+                using(var stream = new FileStream(path,FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+
             c.Blogs.Add(p);
             c.SaveChanges();
             return RedirectToAction("Index");
@@ -57,10 +73,24 @@ namespace GameBlog.Controllers
             return View(toGet);
         }
         [HttpPost]
-        public IActionResult UpdateBlog(Blog p)
+        public async Task<IActionResult> UpdateBlog(Blog p, IFormFile file)
         {
             var cat = c.Category.Where(x => x.CategoryID == p.Category.CategoryID).FirstOrDefault();
             p.Category = cat;
+
+            if(file!=null)
+            {
+                var extention = Path.GetExtension(file.FileName);
+                var randomName = string.Format($"{Guid.NewGuid()}{extention}");
+                p.ImagePath=randomName;
+                var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\images",randomName);
+
+                using(var stream = new FileStream(path,FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+            
             blogRepository.UpdateT(p);
             return RedirectToAction("Index");
         }
