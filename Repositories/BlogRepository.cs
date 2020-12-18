@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameBlog.Repositories
 {
-    public class BlogRepository:GenericRepository<Blog>
+    public class BlogRepository : GenericRepository<Blog>
     {
         BlogContext c = new BlogContext();
         public List<SelectListItem> GetCategoryListForDrop()
